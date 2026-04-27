@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barley & Grapes — European Café, Bengaluru</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --warm-white: #faf7f2;
+    --deep-wine: #3d1a24;
+    --burgundy: #6b2737;
+    --gold: #b8955a;
+    --gold-light: #d4af7a;
+    --charcoal: #2a2420;
+    --text-mid: #5a4a3f;
+    --text-light: #8a7a6f;
+    --border: rgba(184,149,90,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ——— NAV ——— */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--deep-wine);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-white);
+    background: var(--deep-wine);
+    padding: 0.65rem 1.5rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--burgundy); }
+
+  /* ——— HERO ——— */
+  .hero {
+    min-height: 100vh;
+    background: var(--deep-wine);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 5rem 6rem 6rem;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5.5rem;
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-amp {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1.0;
+  }
+  .hero-subtitle {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    margin: 2rem 0 2.5rem;
+    line-height: 2;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .btn-primary {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--deep-wine);
+    background: var(--gold);
+    padding: 1rem 2.2rem;
+    text-decoration: none;
+    transition: all 0.25s;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+  .btn-ghost {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    border: 1px solid rgba(245,240,232,0.3);
+    padding: 1rem 2.2rem;
+    text-decoration: none;
+    transition: all 0.25s;
+    font-family: 'Jost', sans-serif;
+  }
+  .btn-ghost:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-image-area {
+    width: 100%;
+    height: 100%;
+    background:
+      linear-gradient(135deg, rgba(61,26,36,0.4) 0%, rgba(107,39,55,0.2) 50%, transparent 100%),
+      url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80') center/cover;
+    position: relative;
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    background: rgba(245,240,232,0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(184,149,90,0.4);
+    padding: 1.5rem 2rem;
+    color: var(--cream);
+  }
+  .hero-badge-stars {
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+  .hero-badge-text {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+  }
+  .hero-badge-score {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hero-decor {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(to top, var(--warm-white), transparent);
+  }
+
+  /* ——— MARQUEE ——— */
+  .marquee-band {
+    background: var(--gold);
+    padding: 0.9rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-flex;
+    animation: marquee 30s linear infinite;
+    gap: 0;
+  }
+  .marquee-item {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--deep-wine);
+    padding: 0 3rem;
+    font-weight: 500;
+  }
+  .marquee-dot {
+    color: var(--deep-wine);
+    opacity: 0.5;
+    padding: 0 0.5rem;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ——— INTRO ——— */
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 7rem 6rem;
+    background: var(--warm-white);
+  }
+  .intro-text {
+    padding-right: 5rem;
+  }
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--deep-wine);
+    margin-bottom: 2rem;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--burgundy);
+  }
+  .section-body {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--text-mid);
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  .intro-right {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .intro-img-1 {
+    background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=80') center/cover;
+    border-radius: 2px;
+    min-height: 220px;
+    position: relative;
+  }
+  .intro-img-2 {
+    background: url('https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=700&q=80') center/cover;
+    border-radius: 2px;
+    min-height: 220px;
+  }
+  .img-caption {
+    position: absolute;
+    bottom: 1rem; right: 1rem;
+    background: rgba(61,26,36,0.8);
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ——— MENU HIGHLIGHTS ——— */
+  .menu-section {
+    background: var(--cream);
+    padding: 7rem 6rem;
+  }
+  .menu-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .menu-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .menu-tab {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    font-family: 'Jost', sans-serif;
+    position: relative;
+    bottom: -1px;
+  }
+  .menu-tab.active {
+    color: var(--deep-wine);
+    border-bottom: 2px solid var(--gold);
+  }
+  .menu-tab:hover { color: var(--deep-wine); }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+  }
+  .menu-item {
+    background: var(--warm-white);
+    padding: 2rem 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .menu-item:hover { background: #fff; }
+  .menu-item-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+  }
+  .menu-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--deep-wine);
+    margin-bottom: 0.25rem;
+  }
+  .menu-item-desc {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .menu-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  /* ——— EXPERIENCE ——— */
+  .experience {
+    background: var(--deep-wine);
+    padding: 7rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .experience-left .section-title { color: var(--cream); }
+  .experience-left .section-label { color: var(--gold); }
+  .experience-left .section-body { color: rgba(245,240,232,0.65); }
+  .features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+  .features-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    color: rgba(245,240,232,0.7);
+  }
+  .features-list li::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .experience-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .exp-card {
+    background: rgba(245,240,232,0.06);
+    border: 1px solid rgba(184,149,90,0.2);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .exp-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .exp-card-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+  }
+  .exp-card-big {
+    grid-column: 1 / -1;
+    background: url('https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=700&q=80') center/cover;
+    min-height: 200px;
+    position: relative;
+  }
+  .exp-card-big::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(61,26,36,0.5);
+  }
+
+  /* ——— REVIEWS ——— */
+  .reviews {
+    background: var(--warm-white);
+    padding: 7rem 6rem;
+  }
+  .reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .review-card {
+    background: var(--cream);
+    padding: 2.5rem 2rem;
+    border-left: 2px solid var(--gold);
+    position: relative;
+  }
+  .review-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: -0.5rem;
+  }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-mid);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+  .review-author {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+  .review-stars {
+    color: var(--gold);
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ——— GALLERY ——— */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 300px 300px;
+  }
+  .gallery-item {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+  }
+  .gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(61,26,36,0);
+    transition: background 0.3s;
+  }
+  .gallery-item:hover::after {
+    background: rgba(61,26,36,0.3);
+  }
+  .g1 { grid-column: 1/3; background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80'); }
+  .g2 { grid-column: 3; background-image: url('https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=500&q=80'); }
+  .g3 { grid-column: 4/6; background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=80'); }
+  .g4 { grid-column: 1; background-image: url('https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&q=80'); }
+  .g5 { grid-column: 2/4; background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=700&q=80'); }
+  .g6 { grid-column: 4/6; background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80'); }
+
+  /* ——— RESERVE ——— */
+  .reserve {
+    background: var(--cream);
+    padding: 7rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .reserve-info {}
+  .reserve-form {}
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+  input, select, textarea {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: var(--charcoal);
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+  }
+  textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%;
+    background: var(--deep-wine);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1.1rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s;
+    font-weight: 500;
+  }
+  .form-submit:hover { background: var(--burgundy); }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.3rem;
+  }
+  .contact-value {
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ——— FOOTER ——— */
+  footer {
+    background: var(--charcoal);
+    padding: 4rem 6rem 2.5rem;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    letter-spacing: 0.03em;
+  }
+  .footer-tagline {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.4);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+  .footer-social {
+    display: flex;
+    gap: 0.8rem;
+  }
+  .social-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(184,149,90,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .social-btn:hover {
+    background: var(--gold);
+    color: var(--deep-wine);
+    border-color: var(--gold);
+  }
+  .footer-col-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .footer-col a {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 300;
+  }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy {
+    font-size: 0.72rem;
+    color: rgba(245,240,232,0.25);
+    letter-spacing: 0.05em;
+  }
+  .footer-legal {
+    display: flex;
+    gap: 2rem;
+  }
+  .footer-legal a {
+    font-size: 0.72rem;
+    color: rgba(245,240,232,0.25);
+    text-decoration: none;
+  }
+  .footer-legal a:hover { color: var(--gold); }
+
+  /* ——— ANIMATIONS ——— */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.8s ease 0.2s both; }
+  .hero-title { animation: fadeUp 0.8s ease 0.35s both; }
+  .hero-amp { animation: fadeUp 0.8s ease 0.45s both; }
+  .hero-subtitle { animation: fadeUp 0.8s ease 0.55s both; }
+  .hero-actions { animation: fadeUp 0.8s ease 0.65s both; }
+  .hero-badge { animation: fadeUp 0.8s ease 0.75s both; }
+
+  /* ——— RESPONSIVE ——— */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 6rem 2rem 3rem; }
+    .hero-title { font-size: 3.5rem; }
+    .hero-amp { font-size: 3.5rem; }
+    .hero-right { min-height: 350px; }
+    .intro, .experience, .reserve {
+      grid-template-columns: 1fr;
+      padding: 4rem 2rem;
+      gap: 3rem;
+    }
+    .intro-text { padding-right: 0; }
+    .menu-section, .reviews, .gallery-wrapper { padding: 4rem 2rem; }
+    .menu-section { padding: 4rem 2rem; }
+    .reviews { padding: 4rem 2rem; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(6, 200px); }
+    .g1, .g2, .g3, .g4, .g5, .g6 { grid-column: auto; }
+    .footer-top { grid-template-columns: 1fr 1fr; padding: 4rem 2rem 2rem; }
+    footer { padding: 4rem 2rem 2rem; }
+    .footer-bottom { flex-direction: column; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Barley &amp; Grapes</a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+  </ul>
+  <a href="#reserve" class="nav-cta">Reserve a Table</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">European Café &amp; Bistro · Est. Bengaluru</div>
+    <div class="hero-title">Barley</div>
+    <div class="hero-amp">&amp; Grapes</div>
+    <div class="hero-subtitle">
+      Old Madras Road · Brigade Signature Tower<br>
+      Open Daily · Noon to 10:30 PM
+    </div>
+    <div class="hero-actions">
+      <a href="#reserve" class="btn-primary">Reserve a Table</a>
+      <a href="#menu" class="btn-ghost">View Menu</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-area">
+      <div class="hero-badge">
+        <div class="hero-badge-stars">★ ★ ★ ★ ★</div>
+        <div class="hero-badge-score">4.5</div>
+        <div class="hero-badge-text">752 Verified Reviews</div>
+      </div>
+    </div>
+    <div class="hero-decor"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-inner" id="marquee">
+    <span class="marquee-item">Peri Peri Chicken</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Mixed Veg Lasagna</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Fish &amp; Chips</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">New York Cheesecake</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">English Breakfast</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Sangria with Mushroom Cheese Balls</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Turkish Chicken Fried Rice Pilaf</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Sizzling Brownies</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Henry's Chicken Tikka</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Garlic Fish</span><span class="marquee-dot">·</span>
+    <!-- duplicate for loop -->
+    <span class="marquee-item">Peri Peri Chicken</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Mixed Veg Lasagna</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Fish &amp; Chips</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">New York Cheesecake</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">English Breakfast</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Sangria with Mushroom Cheese Balls</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Turkish Chicken Fried Rice Pilaf</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Sizzling Brownies</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Henry's Chicken Tikka</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Garlic Fish</span><span class="marquee-dot">·</span>
+  </div>
+</div>
+
+<!-- INTRO / ABOUT -->
+<section class="intro" id="about">
+  <div class="intro-text">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-title">Where Europe<br>meets <em>Bengaluru</em></h2>
+    <p class="section-body">Tucked into the ground floor of Brigade Signature Tower on Old Madras Road, Barley &amp; Grapes is Bengaluru's most beloved European bistro. From slow-braised classics to handcrafted pastas and indulgent desserts, we bring the warmth of a European dining room to the heart of the city.</p>
+    <p class="section-body">Our chefs obsess over every plate — sourcing the finest ingredients, building flavours with patience, and plating with an artist's eye. Whether you're sharing a lazy Sunday breakfast or celebrating a milestone, every visit is a memory crafted with care.</p>
+    <a href="#reserve" class="btn-primary" style="display:inline-block; margin-top:0.5rem;">Book Your Table</a>
+  </div>
+  <div class="intro-right">
+    <div class="intro-img-1">
+      <span class="img-caption">Interior · Brigade Tower</span>
+    </div>
+    <div class="intro-img-2"></div>
+  </div>
+</section>
+
+<!-- MENU HIGHLIGHTS -->
+<section class="menu-section" id="menu">
+  <div class="menu-header">
+    <div class="section-label" style="justify-content:center;">Curated Selections</div>
+    <h2 class="section-title">Menu <em>Highlights</em></h2>
+  </div>
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="showTab('mains',this)">Mains</button>
+    <button class="menu-tab" onclick="showTab('starters',this)">Starters</button>
+    <button class="menu-tab" onclick="showTab('desserts',this)">Desserts</button>
+    <button class="menu-tab" onclick="showTab('drinks',this)">Drinks</button>
+  </div>
+
+  <div id="tab-mains" class="menu-grid">
+    <div class="menu-item">
+      <div class="menu-item-icon">🍗</div>
+      <div>
+        <div class="menu-item-name">Peri Peri Chicken</div>
+        <div class="menu-item-desc">Flame-grilled chicken marinated in our signature peri peri blend, served with crispy fries &amp; herb slaw.</div>
+        <div class="menu-price">₹ 499</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🐟</div>
+      <div>
+        <div class="menu-item-name">Fish and Chips</div>
+        <div class="menu-item-desc">Golden beer-battered fish fillet, thick-cut chips, tartare sauce &amp; a wedge of lemon.</div>
+        <div class="menu-price">₹ 549</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🍝</div>
+      <div>
+        <div class="menu-item-name">Mixed Veg Lasagna</div>
+        <div class="menu-item-desc">Layers of fresh pasta, grilled seasonal vegetables, béchamel &amp; melted mozzarella.</div>
+        <div class="menu-price">₹ 459</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🥗</div>
+      <div>
+        <div class="menu-item-name">Chicken Salad</div>
+        <div class="menu-item-desc">Grilled chicken breast over mixed greens, avocado, cherry tomatoes &amp; honey mustard dressing.</div>
+        <div class="menu-price">₹ 399</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🍳</div>
+      <div>
+        <div class="menu-item-name">English Breakfast</div>
+        <div class="menu-item-desc">Two eggs your way, back bacon, grilled tomatoes, baked beans, mushrooms &amp; toast.</div>
+        <div class="menu-price">₹ 479</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🍚</div>
+      <div>
+        <div class="menu-item-name">Turkish Chicken Pilaf</div>
+        <div class="menu-item-desc">Fragrant saffron rice with spiced chicken, toasted almonds &amp; a bright pomegranate glaze.</div>
+        <div class="menu-price">₹ 529</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-starters" class="menu-grid" style="display:none">
+    <div class="menu-item">
+      <div class="menu-item-icon">🧅</div>
+      <div>
+        <div class="menu-item-name">Onion Rings</div>
+        <div class="menu-item-desc">Crispy beer-battered onion rings with smoky chipotle dip.</div>
+        <div class="menu-price">₹ 259</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🍖</div>
+      <div>
+        <div class="menu-item-name">Non Veg Platter</div>
+        <div class="menu-item-desc">A sharing board of peri chicken, garlic fish bites, tikka skewers &amp; dips.</div>
+        <div class="menu-price">₹ 799</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🧀</div>
+      <div>
+        <div class="menu-item-name">Mushroom Cheese Balls</div>
+        <div class="menu-item-desc">Crispy croquettes filled with sautéed mushrooms &amp; melted cheese.</div>
+        <div class="menu-price">₹ 299</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🐟</div>
+      <div>
+        <div class="menu-item-name">Garlic Fish</div>
+        <div class="menu-item-desc">Pan-seared fish fillet with roasted garlic butter, capers &amp; fresh herbs.</div>
+        <div class="menu-price">₹ 449</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🍗</div>
+      <div>
+        <div class="menu-item-name">Henry's Chicken Tikka</div>
+        <div class="menu-item-desc">Our house-special tikka: tender chicken, European spice blend, mint chutney.</div>
+        <div class="menu-price">₹ 379</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🥣</div>
+      <div>
+        <div class="menu-item-name">Hummus with Pita</div>
+        <div class="menu-item-desc">Smooth house-made hummus with warm pita, paprika oil &amp; olive tapenade.</div>
+        <div class="menu-price">₹ 239</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-desserts" class="menu-grid" style="display:none">
+    <div class="menu-item">
+      <div class="menu-item-icon">🍰</div>
+      <div>
+        <div class="menu-item-name">New York Cheesecake</div>
+        <div class="menu-item-desc">Velvety baked cheesecake on a buttery graham crust with seasonal berry compote.</div>
+        <div class="menu-price">₹ 299</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🍫</div>
+      <div>
+        <div class="menu-item-name">Sizzling Brownies</div>
+        <div class="menu-item-desc">Warm chocolate fudge brownie on a sizzler plate, topped with vanilla ice cream &amp; hot fudge.</div>
+        <div class="menu-price">₹ 279</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🍮</div>
+      <div>
+        <div class="menu-item-name">Crème Brûlée</div>
+        <div class="menu-item-desc">Classic vanilla custard with a perfectly caramelised sugar crust.</div>
+        <div class="menu-price">₹ 319</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-drinks" class="menu-grid" style="display:none">
+    <div class="menu-item">
+      <div class="menu-item-icon">🍊</div>
+      <div>
+        <div class="menu-item-name">Fresh Orange Juice</div>
+        <div class="menu-item-desc">Cold-pressed Valencia oranges, served immediately over ice.</div>
+        <div class="menu-price">₹ 179</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">🍷</div>
+      <div>
+        <div class="menu-item-name">Sangria</div>
+        <div class="menu-item-desc">House sangria with seasonal fruits, cinnamon &amp; a hint of citrus. (Non-alcoholic available)</div>
+        <div class="menu-price">₹ 349</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-icon">☕</div>
+      <div>
+        <div class="menu-item-name">Artisan Coffee</div>
+        <div class="menu-item-desc">Specialty single-origin espresso drinks, cold brew &amp; pour-overs.</div>
+        <div class="menu-price">from ₹ 149</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:3rem;">
+    <a href="tel:08296105569" class="btn-primary">View Full Menu · Call 082961 05569</a>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="experience-left">
+    <div class="section-label">The Barley &amp; Grapes Way</div>
+    <h2 class="section-title">A space to<br><em>linger &amp; savour</em></h2>
+    <p class="section-body">We believe dining is more than a meal — it's a moment stolen from the rush of the day. Our interiors are warm and unhurried, the service attentive without being intrusive, and the menu wide enough to suit every mood.</p>
+    <ul class="features-list">
+      <li>Reservations recommended — walk-ins welcome</li>
+      <li>Extensive vegetarian &amp; vegan options</li>
+      <li>High chairs available for families</li>
+      <li>Fun dice games — win discounts &amp; free dishes</li>
+      <li>Private dining available for events</li>
+    </ul>
+  </div>
+  <div class="experience-right">
+    <div class="exp-card">
+      <div class="exp-card-num">752+</div>
+      <div class="exp-card-label">Happy Reviews</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-card-num">4.5</div>
+      <div class="exp-card-label">Google Rating</div>
+    </div>
+    <div class="exp-card-big"></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header">
+    <div>
+      <div class="section-label">What Guests Say</div>
+      <h2 class="section-title">Honest <em>Voices</em></h2>
+    </div>
+    <div style="text-align:right">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--deep-wine);line-height:1">4.5</div>
+      <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-light)">out of 5 · 752 reviews</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-quote">"</div>
+      <p class="review-text">Great service and wonderful food! Vegetarian options are also plentiful. The dice game was the highlight — we won a free brownie!</p>
+      <div class="review-author">— Priya M. · Google Review</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-quote">"</div>
+      <p class="review-text">Chill atmosphere, attentive staff, and food that genuinely exceeded expectations. The lasagna is outstanding — came back three times already.</p>
+      <div class="review-author">— Rohan K. · Google Review</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★☆</div>
+      <div class="review-quote">"</div>
+      <p class="review-text">Delicious and authentic European flavours. The pastas are excellent, the ambiance is calm and perfect for a family lunch. Highly recommended.</p>
+      <div class="review-author">— Nisha R. · Google Review</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery">
+    <div class="gallery-item g1"></div>
+    <div class="gallery-item g2"></div>
+    <div class="gallery-item g3"></div>
+    <div class="gallery-item g4"></div>
+    <div class="gallery-item g5"></div>
+    <div class="gallery-item g6"></div>
+  </div>
+</section>
+
+<!-- RESERVE -->
+<section class="reserve" id="reserve">
+  <div class="reserve-info">
+    <div class="section-label">Come Dine With Us</div>
+    <h2 class="section-title">Reserve<br>Your <em>Table</em></h2>
+    <p class="section-body">Reservations are recommended at Barley &amp; Grapes. Call us or fill in the form and we'll confirm your booking shortly.</p>
+    <div class="contact-item">
+      <div class="contact-icon">📞</div>
+      <div>
+        <div class="contact-label">Phone</div>
+        <div class="contact-value"><a href="tel:08296105569" style="color:var(--charcoal);text-decoration:none;">082961 05569</a></div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">📍</div>
+      <div>
+        <div class="contact-label">Address</div>
+        <div class="contact-value">Ground Floor, Brigade Signature Tower<br>Old Madras Road, Bengaluru — 560049</div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">🕐</div>
+      <div>
+        <div class="contact-label">Hours</div>
+        <div class="contact-value">Monday – Sunday<br>12:00 PM – 10:30 PM</div>
+      </div>
+    </div>
+  </div>
+  <div class="reserve-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Priya">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Sharma">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" placeholder="+91 98765 43210">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>Time</label>
+        <select>
+          <option>12:00 PM</option>
+          <option>1:00 PM</option>
+          <option>2:00 PM</option>
+          <option>7:00 PM</option>
+          <option>8:00 PM</option>
+          <option>9:00 PM</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Guests</label>
+      <select>
+        <option>2 Guests</option>
+        <option>3 Guests</option>
+        <option>4 Guests</option>
+        <option>5–6 Guests</option>
+        <option>7+ Guests (Group booking)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Special Requests</label>
+      <textarea placeholder="Dietary requirements, occasion, seating preference…"></textarea>
+    </div>
+    <button class="form-submit" onclick="alert('Thank you! We'll confirm your reservation shortly.')">Confirm Reservation →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Barley &amp; Grapes</div>
+      <p class="footer-tagline">A European café &amp; bistro in the heart of Bengaluru. Where every meal is a small celebration.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">ig</a>
+        <a href="#" class="social-btn">fb</a>
+        <a href="#" class="social-btn">yt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Explore</div>
+      <ul>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Visit</div>
+      <ul>
+        <li><a href="#reserve">Reservations</a></li>
+        <li><a href="tel:08296105569">082961 05569</a></li>
+        <li><a href="#">Order Online</a></li>
+        <li><a href="#">Private Events</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Location</div>
+      <ul>
+        <li><a href="#">Brigade Signature Tower</a></li>
+        <li><a href="#">Old Madras Road</a></li>
+        <li><a href="#">Bengaluru, KA 560049</a></li>
+        <li><a href="#">Get Directions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Barley &amp; Grapes. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function showTab(name, el) {
+  ['mains','starters','desserts','drinks'].forEach(t => {
+    document.getElementById('tab-' + t).style.display = 'none';
+  });
+  document.getElementById('tab-' + name).style.display = 'grid';
+  document.querySelectorAll('.menu-tab').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 60) {
+    nav.style.boxShadow = '0 2px 24px rgba(61,26,36,0.08)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+});
+</script>
+</body>
+</html>
